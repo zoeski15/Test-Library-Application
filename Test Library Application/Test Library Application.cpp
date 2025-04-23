@@ -14,7 +14,7 @@ int main() {
     std::vector<Book> validBooks = { book1, book2, book3 };
     printBooks(validBooks, "Correct Initialisation");
 
-    // Simulated incorrect initializations
+    // Incorrect initializations
     Book badBook1("None", "", "", false, "??");
     Book badBook2("12345", "", "", true, "");
     Book badBook3("", "None", "", false, "0000-00-00");
