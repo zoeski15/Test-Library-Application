@@ -1,6 +1,6 @@
 #include "Book.h"
 
-Book::Book(std::string title, std::string author, std::string isbn, bool available, std::string dateAdded)
+Book::Book(const std::string& title, const std::string& author, const std::string& isbn, bool available, const std::string& dateAdded)
     : title(title), author(author), isbn(isbn), available(available), dateAdded(dateAdded) {
 }
 

@@ -1,12 +1,7 @@
 #pragma once
-#include "Book.h"
-#include <algorithm>
 #include <vector>
+#include "Book.h"
 
-bool compareByTitle(const Book& a, const Book& b) {
-    return a.getTitle() < b.getTitle();
-}
-
-void sortBooks(std::vector<Book>& books) {
-    std::sort(books.begin(), books.end(), compareByTitle);
-}
+void sortBooksByISBN(std::vector<Book>& books);
+void sortBooksByISBNDescending(std::vector<Book>& books);
+void printBooks(const std::vector<Book>& books, const std::string& heading);

@@ -3,17 +3,7 @@
 #include "Book.h"
 #include "Sort Books.h"
 
-void printBooks(const std::vector<Book>& books, const std::string& heading) {
-    std::cout << "\n=== " << heading << " ===\n";
-    for (const Book& book : books) {
-        std::cout << "Title: " << book.getTitle() << "\n"
-            << "Author: " << book.getAuthor() << "\n"
-            << "ISBN: " << book.getISBN() << "\n"
-            << "Availability: " << (book.isAvailable() ? "Available" : "Not Available") << "\n"
-            << "DateAdded: " << book.getDateAdded() << "\n"
-            << "-----------------------------\n";
-    }
-}
+using namespace std;
 
 int main() {
     // Correct initializations
@@ -24,31 +14,28 @@ int main() {
     std::vector<Book> validBooks = { book1, book2, book3 };
     printBooks(validBooks, "Correct Initialisation");
 
-    // "Incorrect" initializations 
-    Book badBook1("", "", "", false, "not-a-date"); 
-    Book badBook2("", "", "123456789", true, "");
-    Book badBook3("Fight Club", "Herman Hesse", "", false, ""); // wrong author
+    // Simulated incorrect initializations
+    Book badBook1("None", "", "", false, "??");
+    Book badBook2("12345", "", "", true, "");
+    Book badBook3("", "None", "", false, "0000-00-00");
 
     std::vector<Book> invalidBooks = { badBook1, badBook2, badBook3 };
     printBooks(invalidBooks, "Incorrect Initialisation");
 
-    // Sorting scenarios
+    // Sorting tests
     std::vector<Book> booksAsc = { book2, book3, book1 };
     std::vector<Book> booksDesc = { book1, book3, book2 };
     std::vector<Book> booksMixed = { book3, book1, book2 };
 
-    printBooks(booksAsc, "Before Sort (Ascending)");
-    sortBooks(booksAsc);
-    printBooks(booksAsc, "After Sort (Ascending)");
+    printBooks(booksAsc, "Before Sort (Ascending by ISBN)");
+    sortBooksByISBN(booksAsc);
+    printBooks(booksAsc, "After Sort (Ascending by ISBN)");
 
-    printBooks(booksDesc, "Before Sort (Descending)");
-    sortBooks(booksDesc);
-    printBooks(booksDesc, "After Sort (Descending)");
+    printBooks(booksDesc, "Before Sort (Descending by ISBN)");
+    sortBooksByISBNDescending(booksDesc);
+    printBooks(booksDesc, "After Sort (Descending by ISBN)");
 
-    printBooks(booksMixed, "Before Sort (Mixed)");
-    sortBooks(booksMixed);
-    printBooks(booksMixed, "After Sort (Mixed)");
+    printBooks(booksMixed, "Unsorted (Mixed Order by ISBN)");
 
     return 0;
 }
-

@@ -3,7 +3,7 @@
 
 class Book {
 public:
-    Book(std::string title, std::string author, std::string isbn, bool available, std::string dateAdded);
+    Book(const std::string& title, const std::string& author, const std::string& isbn, bool available, const std::string& dateAdded);
 
     std::string getTitle() const;
     std::string getAuthor() const;
